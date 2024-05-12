@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Malaysian Culture Explorer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('klcc.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px; /* Adding perspective for 3D effect */
+        }
+
+        .glass-container {
+            width: 75%; /* Set the width as desired */
+            max-width: 500px; /* Maximum width */
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Box shadow for glass effect */
+            backdrop-filter: blur(10px); /* Blur effect */
+            animation: fadeIn 1s ease; /* Fade-in animation */
+            transform: translateZ(50px); /* Adding depth */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .title {
+            font-size: 3rem;
+            color: #e74c3c; /* Red title color */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for depth effect */
+        }
+
+        .description {
+            font-size: 1.5rem;
+            color: #333; /* Black description color */
+            margin-bottom: 60px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Text shadow for depth effect */
+        }
+
+        .start-button {
+            padding: 15px 30px;
+            font-size: 1.3rem;
+            background-color: #e74c3c; /* Red button color */
+            color: #ffffff; /* White button text color */
+            border: 2px solid #e74c3c; /* Red border */
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            animation: shine 4s infinite linear; /* Apply animation */
+            background-image: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 10%, rgba(255, 255, 255, 0.2) 30%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.2) 60%, rgba(255, 255, 255, 0.1) 70%, transparent 100%);
+            background-size: 200% auto;
+            transform-style: preserve-3d; /* Adding 3D effect */
+            position: relative; /* Ensure z-index works */
+        }
+
+        .start-button:hover {
+            background-color: #ffffff; /* White background on hover */
+            color: #e74c3c; /* Red text color on hover */
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container">
+        <h1 class="title">Explore Malaysian Culture</h1>
+        <p class="description">Dive into the vibrant tapestry of Malaysian traditions, festivals, and breathtaking landscapes.</p>
+        <a href="http://127.0.0.1:3000/2-Culture Categories.html" class="start-button">Start Exploring</a>
+    </div>
+</body>
+</html>

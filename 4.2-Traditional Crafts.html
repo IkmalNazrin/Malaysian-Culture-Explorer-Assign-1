@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traditional Crafts Explorer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        /* Custom CSS for modernistic design */
+        body {
+            background-color: #ffcccc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body::-webkit-scrollbar {
+            display: none; /* WebKit (Chrome, Safari, etc.) */
+        }
+
+        .back-button {
+            position: fixed;
+            top: 22px;
+            left: -15px;
+            z-index: 1000;
+        }
+
+        .back-button a {
+            display: inline-block;
+            padding: 0px 12px 0 30px !important;
+            background-color: rgba(250, 95, 85, 0); /* Transparent background */
+            color: #fff;
+            border: 1px solid #FAA0A0;
+            transition: background-color 0.3s ease, transform 0.5s ease-in-out, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button a:hover {
+            background-color: rgba(250, 95, 85, 1); /* Opaque background on hover */
+            transform: scale(1.1);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+
+        .back-button i {
+            font-size: 20px;
+        }
+
+        .section-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            display: inline-block;
+            background-color: #dc3545;
+            padding: 10px 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation-duration: 1s;
+            animation-name: slideInLeft;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: #dc3545;
+        }
+
+        .section-title::before {
+            left: 0;
+        }
+
+        .section-title::after {
+            right: 0;
+        }
+
+        .craft-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .craft-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .craft-card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .craft-card .card-body {
+            padding: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .craft-card:hover .card-body {
+            background-color: #f8f9fa; /* Change background color on hover */
+        }
+
+        .craft-card h3 {
+            color: #dc3545;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .craft-card:hover h3 {
+            color: #6c757d; /* Change text color on hover */
+        }
+
+        .craft-card p {
+            color: #6c757d;
+            font-size: 16px;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .craft-card:hover p {
+            color: #343a40; /* Change text color on hover */
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            border-radius: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        .bi {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .animate__animated {
+            animation-duration: 0.5s;
+        }
+
+        .animate__fadeIn {
+            animation-name: fadeIn;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="back-button">
+        <a href="http://127.0.0.1:3000/3.2-Traditional Crafts.html" class="btn"><i class="bi bi-arrow-left" style="font-size: 20px;"></i></a>
+    </div>
+
+    <div class="container mt-5">
+        <div class="section-container animate__animated animate__fadeIn">
+            <div class="section-title">
+                <h2 class="animate__animated animate__slideInLeft">Explore Traditional Crafts of Malaysia</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="craft-card">
+                        <img src="wau.jpg" class="card-img-top" alt="Wau Image">
+                        <div class="card-body">
+                            <h3 class="card-title">Wau</h3>
+                            <p class="card-text">Learn about Wau, traditional Malaysian kites with stunning designs.</p>
+                            <a href="https://en.wikipedia.org/wiki/Wau_bulan" class="btn btn-danger"><i
+                                    class="bi bi-arrow-up-right-square"></i> Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="craft-card">
+                        <img src="batik.jpeg" class="card-img-top" alt="Batik Image">
+                        <div class="card-body">
+                            <h3 class="card-title">Batik</h3>
+                            <p class="card-text">Discover the art of Batik, a traditional Malaysian textile-making technique.</p>
+                            <a href="https://en.wikipedia.org/wiki/Malaysian_batik" class="btn btn-danger"><i
+                                    class="bi bi-arrow-up-right-square"></i> Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="craft-card">
+                        <img src="songket.jpg" class="card-img-top" alt="Songket Image">
+                        <div class="card-body">
+                            <h3 class="card-title">Songket</h3>
+                            <p class="card-text">Experience the elegance of Songket, traditional Malaysian hand-woven fabric.</p>
+                            <a href="https://en.wikipedia.org/wiki/Songket" class="btn btn-danger"><i
+                                    class="bi bi-arrow-up-right-square"></i> Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

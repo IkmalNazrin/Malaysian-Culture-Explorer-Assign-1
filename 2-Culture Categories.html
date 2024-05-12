@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malaysian Culture Explorer - Culture Categories</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    /* Custom CSS styles */
+    body {
+      background-color: #ffcccc; /* Soft red background color */
+      font-family: 'Segoe UI', sans-serif; /* Change font */
+      margin: 0; /* Remove default margin */
+      padding-top: 80px; /* Add padding-top to compensate for fixed header */
+    }
+
+    body::-webkit-scrollbar {
+      display: none; /* WebKit (Chrome, Safari, etc.) */
+    }
+
+    .back-button {
+      position: fixed;
+      top: 22px;
+      left: -15px;
+      z-index: 1000;
+    }
+
+    .back-button a {
+      display: inline-block;
+      padding: 0px 12px 0 30px !important;
+      background-color: rgba(250, 95, 85, 0); /* Transparent background */
+      color: #fff;
+      border: 1px solid #FAA0A0;
+      transition: background-color 0.3s ease, transform 0.5s ease-in-out, box-shadow 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-button a:hover {
+      background-color: rgba(250, 95, 85, 1); /* Opaque background on hover */
+      transform: scale(1.1);
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+      text-decoration: none;
+    }
+
+    .back-button i {
+      font-size: 20px;
+    }
+
+    .culture-title-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 5px; /* Adjust padding */
+      margin: -1px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.3s ease;
+      z-index: 999;
+      font-size: 14px; /* Adjust font size */
+      background-color: rgba(250, 128, 114, 0.5);
+      backdrop-filter: blur(10px);
+      color: #fff;
+    }
+
+    .culture-title {
+      animation: fadeInUp 1s ease-out;
+      font-weight: bold;
+      color: #333;
+      text-align: left;
+      margin: -10px 10px 10px 10px;
+      padding: 10px 0; /* Adjust padding */
+      font-size: 1.5rem; /* Adjust font size */
+      padding-left: 15px; /* Adjust padding */
+      border-top-right-radius: 15px; /* Adjust border radius */
+      border-bottom-left-radius: 15px; /* Adjust border radius */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.3s ease;
+      background-color: #e5a3a3;
+    }
+
+    .culture-container {
+      background-color: #fff; /* Soft white background color */
+      border-radius: 20px 20px 0 0; /* Only top corners rounded */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+      padding: 20px 20px 70px; /* Add padding */
+      margin-top: 55px; /* Add margin-top to separate from title */
+    }
+
+    .culture-card {
+      margin-bottom: 20px;
+      border-radius: 15px; /* Rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      transition: transform 0.3s ease-in-out, background-color 0.3s ease; /* Smooth hover effect */
+    }
+
+    .culture-card:hover {
+      transform: scale(1.02); /* Scale up on hover */
+      background-color: #f8f9fa; /* Light gray background on hover */
+    }
+
+    .card-img-top {
+      max-height: 200px; /* Adjust image height */
+      object-fit: cover; /* Maintain aspect ratio */
+      border-top-left-radius: 15px; /* Rounded corners */
+      border-top-right-radius: 15px; /* Rounded corners */
+      transition: transform 0.3s ease; /* Smooth transition */
+    }
+
+    .card-img-top:hover {
+      transform: scale(1.02); /* Increase size on hover */
+    }
+
+    .card-body {
+      background-color: #fff; /* White background */
+      border-bottom-left-radius: 15px; /* Rounded corners */
+      border-bottom-right-radius: 15px; /* Rounded corners */
+    }
+
+    .card-title {
+      color: #333; /* Dark text color */
+      margin-bottom: 0; /* Remove bottom margin */
+    }
+
+    .card-text {
+      color: #666; /* Light text color */
+      margin-bottom: 10px; /* Remove bottom margin */
+    }
+
+    .btn-primary {
+      background-color: #ff6f61; /* Reddish-orange button color */
+      border-color: #ff6f61; /* Reddish-orange border color */
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .btn-primary:hover {
+      background-color: #d9534f; /* Darker shade on hover */
+      border-color: #d9534f; /* Darker shade on hover */
+    }
+
+    /* Bottom Navigation Bar Styles */
+    .bottom-nav {
+      position: fixed; /* Fixed positioning */
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffad99; /* Background color for navbar */
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px 0; /* Reduced padding */
+      box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.3); /* Adding shadow effect */
+      z-index: 999; /* Ensure it stays on top of other content */
+  }
+
+  .bottom-nav a {
+      text-decoration: none;
+      color: #702963; /* Text color for navbar links */
+      transition: color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px; /* Reduced font size for navbar text */
+      font-weight: bold; /* Make the text bold */
+  }
+
+  .bottom-nav a:hover {
+      color: #fff; /* Text color for navbar links on hover */
+  }
+
+  .bottom-nav i {
+      font-size: 24px;
+      margin-bottom: 5px;
+  }
+
+  /* Icons */
+  .bottom-nav a::before {
+      font-size: 24px;
+      margin-bottom: 3px;
+      transition: transform 0.3s ease; /* Adding transition effect */
+      font-weight: bold;
+  }
+
+  .bottom-nav a:hover::before {
+      transform: scale(1.2); /* Scale up the icon on hover */
+  }
+
+  .bottom-nav a:nth-child(1)::before {
+      content: "🏠"; /* Unicode for home icon */
+  }
+
+  .bottom-nav a:nth-child(2)::before {
+      content: "📋"; /* Unicode for list icon */
+  }
+
+  .bottom-nav a:nth-child(3)::before {
+      content: "👤"; /* Unicode for user icon */
+  }
+
+  .bottom-nav a:nth-child(4)::before {
+      content: "🌐"; /* Unicode for map-marker-alt icon */
+  }
+  </style>
+</head>
+<body>
+  <div class="back-button">
+    <a href="http://127.0.0.1:3000/index.html" class="btn"><i class="bi bi-arrow-left" style="font-size: 20px;"></i></a>
+  </div>
+  <div class="culture-title-container">
+    <h1 class="mt-4 culture-title">Culture Categories</h1>
+  </div>
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <a href="http://127.0.0.1:3000/index.html">Home</a>
+    <a href="http://127.0.0.1:3000/2-Culture Categories.html">Categories</a>
+    <a href="http://127.0.0.1:3000/5-User Preference.html">Preferences</a>
+    <a href="http://127.0.0.1:3000/6-Plan Your Trip.html">Trip</a>
+  </nav>
+  <div class="container culture-container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeIn">
+        <div class="card culture-card">
+          <img src="festivals.jpg" class="card-img-top" alt="Festivals & Celebrations">
+          <div class="card-body">
+            <h5 class="card-title">Festivals & Celebrations</h5>
+            <p class="card-text">Discover the rich tapestry of Malaysian festivals and celebrations.</p>
+            <a href="http://127.0.0.1:3000/3.1-Festivals & Celebrations.html" class="btn btn-primary">Explore</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeIn">
+        <div class="card culture-card">
+          <img src="traditional-crafts.png" class="card-img-top" alt="Traditional Crafts">
+          <div class="card-body">
+            <h5 class="card-title">Traditional Crafts</h5>
+            <p class="card-text">Explore the intricate craftsmanship of Malaysia's traditional artisans.</p>
+            <a href="http://127.0.0.1:3000/3.2-Traditional Crafts.html" class="btn btn-primary">Explore</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeIn">
+        <div class="card culture-card">
+          <img src="performing-arts.jpg" class="card-img-top" alt="Performing Arts">
+          <div class="card-body">
+            <h5 class="card-title">Performing Arts</h5>
+            <p class="card-text">Experience the vibrant performances that bring Malaysian culture to life.</p>
+            <a href="http://127.0.0.1:3000/3.3-Performing Arts.html" class="btn btn-primary">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>

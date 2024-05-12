@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Malaysian Culture Preferences</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-McwwAlojUtsHxyGvSH7m9ijUU5PXXcWEYrN8ukY7f7EJuzoFkIXa0fFj6zq35qzW" crossorigin="anonymous">
+    <style>
+        /* Custom CSS for modernistic design */
+        body {
+            background-color: #ffcccc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body::-webkit-scrollbar {
+        display: none; /* WebKit (Chrome, Safari, etc.) */
+        }
+
+        .section-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 70px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border: none;
+            border-radius: 15px; /* Adjusted border radius */
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            box-shadow: 0 0 0 1px #ced4da;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 1px #dc3545;
+        }
+
+        .form-select {
+            border: none;
+            border-radius: 15px; /* Adjusted border radius */
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            box-shadow: 0 0 0 1px #ced4da;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-select:focus {
+            box-shadow: 0 0 0 1px #dc3545;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            border-radius: 15px; /* Adjusted border radius */
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom styles for form elements */
+        .form-label {
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 10px; /* Adjusted margin */
+            display: inline-block; /* Display inline-block to align label and input */
+        }
+
+        .form-check-label {
+            color: #6c757d;
+            margin-bottom: 10px; /* Adjusted margin */
+            display: inline-block; /* Display inline-block to align label and input */
+        }
+
+        .form-check-input {
+            margin-right: 5px; /* Added margin between input and label */
+        }
+
+        .btn-submit {
+            background-color: #dc3545;
+            color: #fff;
+            border-radius: 15px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        /* Line styling */
+        .section-title {
+            position: relative;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            display: inline-block;
+            background-color: #fff;
+            padding: 0 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #dc3545;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: #dc3545;
+        }
+
+        .section-title::before {
+            left: 0;
+        }
+
+        .section-title::after {
+            right: 0;
+        }
+
+        /* Table styling */
+        .table-container {
+            border: 1px solid #dc3545;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-container th,
+        .table-container td {
+            border: 1px solid #dc3545;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .table-container table tbody tr:nth-child(odd) {
+            background-color: #ffe6e6; /* Soft red */
+        }
+
+        .table-container table tbody tr:nth-child(even) {
+            background-color: #ffffff; /* White */
+        }
+
+        /* Custom line styling */
+        .custom-line {
+            border: none;
+            height: 1px;
+            background-color: #dc3545;
+            margin: 20px 0; /* Adjusted margin */
+        }
+
+        /* Customized HR styling */
+        hr {
+            border-color: #dc3545;
+            margin: 20px 0; /* Adjusted margin */
+        }/* Bottom Navigation Bar Styles */
+        .bottom-nav {
+            position: fixed; /* Fixed positioning */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffad99; /* Background color for navbar */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 5px 0; /* Reduced padding */
+            box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.3); /* Adding shadow effect */
+            z-index: 999; /* Ensure it stays on top of other content */
+        }
+
+        .bottom-nav a {
+            text-decoration: none;
+            color: #702963; /* Text color for navbar links */
+            transition: color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px; /* Reduced font size for navbar text */
+            font-weight: bold; /* Make the text bold */
+        }
+
+        .bottom-nav a:hover {
+            color: #fff; /* Text color for navbar links on hover */
+        }
+
+        .bottom-nav i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        /* Icons */
+        .bottom-nav a::before {
+            font-size: 24px;
+            margin-bottom: 3px;
+            transition: transform 0.3s ease; /* Adding transition effect */
+            font-weight: bold;
+        }
+
+        .bottom-nav a:hover::before {
+            transform: scale(1.2); /* Scale up the icon on hover */
+        }
+
+        .bottom-nav a:nth-child(1)::before {
+            content: "🏠"; /* Unicode for home icon */
+        }
+
+        .bottom-nav a:nth-child(2)::before {
+            content: "📋"; /* Unicode for list icon */
+        }
+
+        .bottom-nav a:nth-child(3)::before {
+            content: "👤"; /* Unicode for user icon */
+        }
+
+        .bottom-nav a:nth-child(4)::before {
+            content: "🌐"; /* Unicode for map-marker-alt icon */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section-container fade-in">
+        <div class="section-title">
+            <h2>Explore Malaysian Culture Preferences</h2>
+            <div class="section-title-line"></div>
+        </div>
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="http://127.0.0.1:3000/index.html">Home</a>
+            <a href="http://127.0.0.1:3000/2-Culture Categories.html">Categories</a>
+            <a href="http://127.0.0.1:3000/5-User Preference.html">Preferences</a>
+            <a href="http://127.0.0.1:3000/6-Plan Your Trip.html">Trip</a>
+        </nav>
+        <form>
+            <!-- Festivals & Celebrations -->
+            <div class="mb-3 slide-up">
+                <h3>Festivals & Celebrations</h3>
+                <label class="form-label">
+                    <input type="checkbox" class="form-check-input" value="attend-festivals" id="attend-festivals">
+                    Interested in attending festivals
+                </label>
+                <label class="form-label">Favorite Festival:</label>
+                <input type="text" class="form-control" placeholder="Enter your favorite festival" required>
+                <hr class="custom-line">
+            </div>
+
+            <!-- Traditional Crafts -->
+            <div class="mb-3 slide-up">
+                <h3>Traditional Crafts</h3>
+                <label class="form-label">
+                    <input class="form-check-input" type="checkbox" value="learn-craft-skills" id="learn-craft-skills">
+                    Interested in learning craft skills
+                </label>
+                <label class="form-label">Favorite Craft:</label>
+                <select class="form-select">
+                    <option selected disabled>Select your favorite craft...</option>
+                    <option value="batik">Batik</option>
+                    <option value="songket">Songket</option>
+                    <option value="weaving">Weaving</option>
+                    <option value="pottery">Pottery</option>
+                    <option value="woodcarving">Woodcarving</option>
+                    <!-- Add more craft options as needed -->
+                </select>
+                <hr class="custom-line">
+            </div>
+
+            <!-- Performing Arts -->
+            <div class="mb-3 slide-up">
+                <h3>Performing Arts</h3>
+                <label class="form-label">Favorite Types of Performances:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="performance-type" id="dance" value="dance">
+                    <label class="form-check-label" for="dance">
+                        Dance
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="performance-type" id="theater" value="theater">
+                    <label class="form-check-label" for="theater">
+                        Theater
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="performance-type" id="music" value="music">
+                    <label class="form-check-label" for="music">
+                        Music
+                    </label>
+                </div>
+                <textarea class="form-control" rows="3" placeholder="Share your experiences or interests"></textarea>
+                <hr class="custom-line">
+            </div>
+
+            <!-- Additional form fields -->
+            <div class="mb-3 slide-up">
+                <h3>Additional Details</h3>
+                <label class="form-label">Any other cultural activities you're interested in?</label>
+                <textarea class="form-control" rows="5" placeholder="Share your interests"></textarea> <!-- Adjusted rows -->
+                <hr class="custom-line">
+            </div>
+            <div class="mb-3 slide-up">
+                <label class="form-label">Any favorite Malaysian delicacies?</label>
+                <input type="text" class="form-control" placeholder="Your favorite dish">
+                <hr class="custom-line">
+            </div>
+
+            <!-- Seven types of inputs -->
+            <div class="mb-3 slide-up">
+                <label class="form-label">Interests:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="festivals" id="festivals">
+                    <label class="form-check-label" for="festivals">
+                        Festivals & Celebrations
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="crafts" id="crafts">
+                    <label class="form-check-label" for="crafts">
+                        Traditional Crafts
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="performing-arts" id="performing-arts">
+                    <label class="form-check-label" for="performing-arts">
+                        Performing Arts
+                    </label>
+                </div>
+                <hr class="custom-line">
+            </div>
+
+            <!-- Dropdown list -->
+            <div class="mb-3 slide-up">
+                <label for="citySelect" class="form-label">Select State:</label>
+                <select class="form-select" id="citySelect">
+                    <option selected disabled>Select a state...</option>
+                    <option value="johor">Johor</option>
+                    <option value="kedah">Kedah</option>
+                    <option value="kelantan">Kelantan</option>
+                    <option value="melaka">Melaka</option>
+                    <option value="negeri-sembilan">Negeri Sembilan</option>
+                    <option value="pahang">Pahang</option>
+                    <option value="perak">Perak</option>
+                    <option value="perlis">Perlis</option>
+                    <option value="penang">Penang</option>
+                    <option value="sabah">Sabah</option>
+                    <option value="sarawak">Sarawak</option>
+                    <option value="selangor">Selangor</option>
+                    <option value="terengganu">Terengganu</option>
+                    <!-- Add more states as needed -->
+                </select>
+                <hr class="custom-line">
+            </div>
+
+            <!-- Textarea -->
+            <div class="mb-3 slide-up">
+                <label class="form-label">Additional Comments:</label>
+                <textarea class="form-control" rows="5"></textarea> <!-- Adjust the rows attribute here -->
+                <hr class="custom-line">
+            </div>
+
+            <!-- Date input -->
+            <div class="mb-3 slide-up">
+                <label class="form-label">Date of Birth:</label>
+                <input type="date" class="form-control">
+                <hr class="custom-line">
+            </div>
+
+            <!-- Email input -->
+            <div class="mb-3 slide-up">
+                <label class="form-label">Email:</label>
+                <input type="email" class="form-control" placeholder="Enter your email" required>
+                <hr class="custom-line">
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-submit slide-up">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
